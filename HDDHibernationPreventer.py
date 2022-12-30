@@ -1,9 +1,10 @@
 import time
-
+import os
+cwd=os.path.dirname(__file__)+'\\'
 
 def text_create(name, msg):
-    desktop_path = "./"
-    full_path = desktop_path + name + '.txt'
+    full_path = cwd + name + '.txt'
+    print(full_path)
     with open(full_path, 'w') as file:
         file.write(msg)
 
@@ -22,11 +23,12 @@ class HibernationPreventer:
     def write(self):
         print("开始运行")
         n = 0
+        path=cwd+self.txt_name+'.txt'
         while True:
             n += 1
-            with open(self.txt_name+'.txt', "w", encoding="utf8") as f:
+            with open(path, "w", encoding="utf8") as f:
                 f.writelines(f"第{n}次写入")
-            with open(self.txt_name+'.txt', "r", encoding="utf8") as f:
+            with open(path, "r", encoding="utf8") as f:
                 data = f.read()
             print(data)
 
